@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-
 const user = mongoose.Schema({
   _id: mongoose.Schema.Types.ObjectId,
   email: { type: String, required: true },
@@ -7,4 +6,4 @@ const user = mongoose.Schema({
 })
 
 
-module.export = mongoose.model('User', user);
+module.exports = mongoose.model('User', user);

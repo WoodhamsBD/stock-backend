@@ -2,9 +2,10 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
+const user = require('./routes/user.route');
 
 // Start up port
-const port = 3000;
+const PORT = 3000;
 
 // MongoDB 
 const mongoose = require('mongoose');
@@ -14,14 +15,17 @@ mongoose.connect('mongodb://localhost/jwtauth')
 app.use(bodyParser.urlencoded({ extended: false}));
 app.use(bodyParser.json());
 
-// Start up
-app.listen(port, function() {
-  console.log("Listening on port: " + port);
-})
-
+// GET verificationls
 app.get('/checking', function(req, res) {
   res.json({
     "Tutorial": "JWT runthrough"
   });
 });
 
+// User routing
+app.use('/user',user);
+
+// Start up Verification
+app.listen(PORT, function () {
+  console.log("Listening on port: " + PORT);
+})
